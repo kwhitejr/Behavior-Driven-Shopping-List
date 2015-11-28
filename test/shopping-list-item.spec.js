@@ -20,6 +20,10 @@ describe('ShoppingListItem', function () {
     expect(shoppingListItem).to.have.property('isDone');
   });
 
+  it('property "isDone" should initialize as false', function () {
+    expect(shoppingListItem.isDone).to.equal(false);
+  });
+
 });
 
 describe('.check', function() {
@@ -54,4 +58,12 @@ describe('.render', function() {
     expect(shoppingListItem.render).to.be.a('function');
   });
 
+  it('should return an HTML string', function () {
+    var shoppingListItem = new ShoppingListItem('apple', 'red and shiny');
+    expect(shoppingListItem.render()).to.be.a('string');
+    expect(shoppingListItem.render()).to.equal('<li class="completed_false">' +
+    '<span>' + 'apple' + '</span>' +
+    '<span>' + 'red and shiny' + '</span>' +
+    '</li>');
+  });
 });
